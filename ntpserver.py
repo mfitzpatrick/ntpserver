@@ -55,8 +55,8 @@ def _to_time(integ, frac, n=32):
     Retuns:
     timestamp
     """
-    return integ + float(frac)/2**n	
-		
+    return integ + float(frac)/2**n
+
 
 
 class NTPException(Exception):
@@ -119,7 +119,7 @@ class NTPPacket:
 
     This represents an NTP packet.
     """
-    
+
     _PACKET_FORMAT = "!B B B b 11I"
     """packet format to pack/unpack"""
 
@@ -161,7 +161,7 @@ class NTPPacket:
         self.tx_timestamp_high = 0
         self.tx_timestamp_low = 0
         """tansmit timestamp"""
-        
+
     def to_data(self):
         """Convert this NTPPacket to a buffer that can be sent over a socket.
 
@@ -234,7 +234,7 @@ class NTPPacket:
     def SetOriginTimeStamp(self,high,low):
         self.orig_timestamp_high = high
         self.orig_timestamp_low = low
-        
+
 
 class RecvThread(threading.Thread):
     def __init__(self,socket):
@@ -289,8 +289,8 @@ class WorkThread(threading.Thread):
                 print "Sended to %s:%d" % (addr[0],addr[1])
             except Queue.Empty:
                 continue
-                
-        
+
+
 listenIp = "0.0.0.0"
 listenPort = 123
 socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
@@ -312,4 +312,4 @@ while True:
         #socket.close()
         print "Exited"
         break
-        
+
